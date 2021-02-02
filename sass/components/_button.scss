@@ -1,0 +1,140 @@
+/*--- Buttons ---*/
+
+.btn {
+    &,
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        word-spacing: 0.2rem;
+        padding: 15px 40px;
+        margin-bottom: 2rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .5s;
+        position: relative;
+
+        //CHANGE FOR THE <BUTTTON> ELEMENT
+        border: none;
+        cursor: pointer;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba($color-black, 0.2);
+        
+            &::after {
+                transform: scaleX(1.4) scaleY(1.6);
+                opacity: 0;
+               
+            }
+    }
+        
+    &:active,
+    &:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba($color-black, 0.2);
+    }
+        
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .75s;
+    }
+        
+    &__white {
+        background-color: $color-white;
+        color: $color-dark-grey;
+    
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    
+    &__green {
+        background-color: $color-primary;
+        color: $color-white;
+        
+    
+        &::after {
+            
+            background-color: $color-primary;
+        }
+
+        &--arrow {
+            opacity: 0;
+            display: inline-block;
+            transform: translateY(1rem);
+            transition: all .4s;
+
+            @include respond(tab-land) {
+                opacity: 1;
+                transform: translateY(-.3rem); 
+            }
+            
+        }
+
+        &:hover &--arrow { 
+            opacity: 1;
+            transform: translateY(-.3rem) 
+        }
+    }
+        
+    &__animated {
+        animation: moveInUp 1s 1s ease-in; 
+        animation-fill-mode: backwards;
+    }  
+}     
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: 1.6rem;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: .3rem;
+        transition: all .5s;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+        transform: translateY(0);
+    }
+
+    &--arrow {
+        opacity: 0;
+        display: inline-block;
+        transform: translateY(.5rem);
+        transition: opacity .3s;
+        transition: transform .3s;
+
+        @include respond(tab-land) {
+            opacity: 1;
+            transform: translateY(-.1rem) 
+        }
+    }    
+        
+    
+
+    &:hover &--arrow { 
+        opacity: 1;
+        transform: translateY(-.1rem) 
+    }
+}
